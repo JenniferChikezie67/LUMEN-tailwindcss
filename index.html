@@ -6,20 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello World</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
 </head>
 
 <body class="bg-primary-bg">
 
     <header class="bg-primary-bg">
-        <section class="app-container flex justify-between items-center p-4">
+        <section class="app-container flex justify-between items-center py-2 px-3 md:p-4">
             <!-- Brand Logo / Name -->
             <div class="text-white text-2xl font-semibold py-4">
                 LUMEN <span class="text-primary">Studio</span>
             </div>
 
             <!-- Navigation Menu -->
-            <nav class="text-1xl text-white fixed top-0 -left-54 h-full bg-primary-bg-light w-54">
-                <ul class="flex flex-col">
+            <nav class="text-xl text-muted fixed lg:static top-0 -left-54 h-full bg-primary-bg-light lg:bg-transparent w-54 lg:w-auto transition-[left] duration-300" id="nav-menu">
+                <ul class="flex flex-col lg:flex-row text-sm">
                     <li>
                         <a href="" class="block py-3 px-4">About</a>
                     </li>
@@ -42,13 +43,18 @@
             </nav>
 
             <!-- CTA Button -->
-            <div>
-                <button class="bg-primary-bg-light text-white border border-white/50 py-4 px-7 rounded-4xl">
+            <div class="flex items-center gap-2">
+                <button class="bg-primary-bg-light text-white border border-white/50 p-3 text-sm md:py-4 md:px-7 rounded-4xl">
                     Start A Project
+                </button>
+                
+                <button onclick="toggleNavmenu()" class="text-white border border-white/50 p-2 text-sm md:p-3 md:text-base rounded-lg lg:hidden">
+                    <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
         </section>
     </header>
-</body>
 
+    <script src="./js/index.js"></script>
+</body>
 </html>
