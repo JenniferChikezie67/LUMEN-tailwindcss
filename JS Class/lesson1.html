@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1</title>
+
+    <style>
+        [id=div1]{
+            background-color: teal;
+        }
+
+        [title=testing]{
+            color: darkorange;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="div1">
+        Hello my people
+    </div>
+
+    <div id="div2" name="div">
+
+    </div>
+
+    <h1>Just testing</h1>
+
+    <h6 title="testing">
+        Still Testing
+    </h6>
+
+    <span class="blue-els" id="span1" style="color: blue;">
+        This is our span
+    </span>
+
+    <div id="div3" name="div">
+
+    </div>
+
+    <!-- All JavaScripts Here -->
+    <script>
+        /**
+         * document (context) means the current file that is connected to the script (eg. just as the alert, prompt, confirm are under the window context)
+        */
+        // window.alert("Hi everyone")
+        // alert("How are you doing?")
+
+        // Getting Element by TagName - Returns a HTMLCollection (can be accessed using the index and the id)
+        // let element = document.getElementsByTagName('div');
+        // console.log(element.div1);
+
+        // Getting Element by Name - Returns a NodeList  (can only be accesssed using the index)
+        // let element = document.getElementsByName('div');
+        // console.log(element[1]);
+
+        // Getting Element by Class Name - Returns a HTMLCollection  (can be accessed using the index and the id)
+        // let element = document.getElementsByClassName('blue-els');
+        // console.log(element);
+
+        // Getting Element by ID - Returns an Element 
+        // let element = document.getElementById('span1');
+        // element.style.color = 'red';
+        // console.log(element.style.color);
+
+        // Getting Element Using Query Selector (just like your CSS code) - Return an Element
+        // let element = document.querySelector("div"); // by Tag Name
+        // let element = document.querySelector("#div3"); // by ID
+        // let element = document.querySelector(".blue-els"); // by Class Name
+        // let element = document.querySelector("[id=div1]"); // by Attribute
+        // console.log(element);
+
+        // Getting Element Using Query SelectorAll (just like your CSS code) - Return an NodeList
+        let element = document.querySelectorAll("div"); // by Tag Name
+        // let element = document.querySelectorAll("#div3"); // by ID
+        // let element = document.querySelectorAll(".blue-els"); // by Class Name
+        // let element = document.querySelectorAll("[id=div1]"); // by Attribute
+        console.log(element);
+
+
+
+    </script>
+</body>
+
+</html>
