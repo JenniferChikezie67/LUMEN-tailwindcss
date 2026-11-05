@@ -11,10 +11,44 @@
     --color-primary-bg: #0B1418;
     --color-primary-bg-light: #101C22;
     --color-muted: #93A8AF;
+
+    --animate-custom-bounce: custom-bounce 5s ease-in-out infinite;
+    --animate-custom-bounce-slower: custom-bounce 7s ease-in-out infinite;
+
+    @keyframes custom-bounce {
+        0%,
+        100% {
+            transform: translateY(40px);
+        }
+
+        50% {
+            transform: translateY(0);
+        }
+    }
 }
 
 .app-container {
     /* max-width: 1280px;
     margin: auto; */
     @apply max-w-7xl m-auto;
+    /* transform: translateY(100px); */
 }
+
+.nav-a {
+    position: relative;
+}
+
+.slanted{
+    clip-path: polygon(5% 0, 100% 0%, 95% 100%, 0% 100%);
+    -webkit-clip-path: polygon(5% 0, 100% 0%, 95% 100%, 0% 100%);
+}
+
+/* .nav-a::after{
+    content: '';
+    position: absolute;
+    height: px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: brown;
+} */

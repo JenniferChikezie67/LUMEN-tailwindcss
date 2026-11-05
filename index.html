@@ -11,7 +11,7 @@
 
 <body class="bg-primary-bg">
 
-    <header class="bg-primary-bg">
+    <header class="bg-primary-bg/70 backdrop-blur-xl sticky top-0 border-b border-muted/50 z-50">
         <section class="app-container flex justify-between items-center py-2 px-3 md:p-4">
             <!-- Brand Logo / Name -->
             <div class="text-white text-2xl font-semibold py-4">
@@ -19,42 +19,74 @@
             </div>
 
             <!-- Navigation Menu -->
-            <nav class="text-xl text-muted fixed lg:static top-0 -left-54 h-full bg-primary-bg-light lg:bg-transparent w-54 lg:w-auto transition-[left] duration-300" id="nav-menu">
+            <nav class="text-xl text-muted fixed lg:static top-0 -left-54 h-full bg-primary-bg-light lg:bg-transparent w-54 lg:w-auto transition-[left] duration-300"
+                id="nav-menu">
                 <ul class="flex flex-col lg:flex-row text-sm">
                     <li>
-                        <a href="" class="block py-3 px-4">About</a>
+                        <a href="" class="block py-3 px-4 hover:text-white nav-a">About</a>
                     </li>
                     <li>
-                        <a href="" class="block py-3 px-4">Services</a>
+                        <a href="" class="block py-3 px-4 hover:text-white nav-a">Services</a>
                     </li>
                     <li>
-                        <a href="" class="block py-3 px-4">Work</a>
+                        <a href="" class="block py-3 px-4 hover:text-white nav-a">Work</a>
                     </li>
                     <li>
-                        <a href="" class="block py-3 px-4">Process</a>
+                        <a href="" class="block py-3 px-4 hover:text-white nav-a">Process</a>
                     </li>
                     <li>
-                        <a href="" class="block py-3 px-4">Team</a>
+                        <a href="" class="block py-3 px-4 hover:text-white nav-a">Team</a>
                     </li>
                     <li>
-                        <a href="" class="block py-3 px-4">Pricing</a>
+                        <a href="" class="block py-3 px-4 hover:text-white nav-a">Pricing</a>
                     </li>
                 </ul>
             </nav>
 
             <!-- CTA Button -->
             <div class="flex items-center gap-2">
-                <button class="bg-primary-bg-light text-white border border-white/50 p-3 text-sm md:py-4 md:px-7 rounded-4xl">
+                <button
+                    class="bg-primary-bg-light text-white border border-white/50 p-3 text-sm md:py-4 md:px-7 rounded-4xl hover:-translate-y-4 transition-all duration-500">
                     Start A Project
                 </button>
-                
-                <button onclick="toggleNavmenu()" class="text-white border border-white/50 p-2 text-sm md:p-3 md:text-base rounded-lg lg:hidden">
+
+                <button onclick="toggleNavmenu()"
+                    class="text-white border border-white/50 p-2 text-sm md:p-3 md:text-base rounded-lg lg:hidden">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
         </section>
     </header>
 
+    <!-- HERO SECTION -->
+    <section>
+        <div
+            class="app-container flex flex-col lg:flex-row items-center justify-center lg:justify-between min-h-96 py-10">
+            <aside class="flex-1">Content</aside>
+            <aside class="flex-1 flex justify-center items-center relative">
+                <div
+                    class="h-140 w-[70%] flex justify-center items-center overflow-hidden rounded-2xl animate-custom-bounce z-0 relative">
+                    <img src="./assets/images/hero-img.avif" alt="" class="object-cover min-h-full">
+                </div>
+                <!-- Year of Experience -->
+                <div class="bg-muted/10 backdrop-blur absolute p-4 max-w-60 rounded-2xl space-y-3 left-0 bottom-10 border border-muted/30 animate-custom-bounce-slower">
+                    <h1 class="text-5xl text-primary font-bold">25+</h1>
+                    <p class="text-muted uppercase text-sm font-mono">
+                        Years shaping spaces across 18 countries
+                    </p>
+                </div>
+
+                <!-- Fixed Top Banner -->
+                 <div class="py-2 px-4 absolute right-20 rounded-lg top-0 bg-primary slanted">
+                    Est. 1999
+                 </div>
+            </aside>
+        </div>
+    </section>
+
+    <div class="bg-white h-1000"></div>
+
     <script src="./js/index.js"></script>
 </body>
+
 </html>
