@@ -43,12 +43,16 @@
     -webkit-clip-path: polygon(5% 0, 100% 0%, 95% 100%, 0% 100%);
 }
 
-/* .nav-a::after{
+.nav-a::after{
     content: '';
     position: absolute;
-    height: px;
-    width: 100%;
+    height: 2px;
+    width: 0;
     left: 0;
     bottom: 0;
     background-color: brown;
-} */
+    transition: all 800ms;
+}
+.nav-a.nav-a:hover::after{
+    width: 100%;
+}
