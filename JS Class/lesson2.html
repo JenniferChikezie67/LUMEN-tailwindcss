@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <!-- First Form -->
+        <section>
+            <form id="age_calForm" name="frm_age_calculator" onsubmit="handleFormEvent(event)">
+                <div>
+                    <label for="yearOfBirth">Year of Birth:</label>
+                    <!-- <input type="text" name="yearOfBirth" id="yearOfBirth" value="This is the content of this input box" readonly> -->
+                    <input type="text" name="yearOfBirth" id="yearOfBirth" placeholder="Enter the year of birth">
+                </div>
+                <div id="result-pane">
+
+                </div>
+                <div>
+                    <!-- <button type="submit"> || It will still work with the button type submit, as long as there is a submit handler on the form -->
+                    <button type="button" onclick="CalculateAge()">
+                        Calculate
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <hr>
+        
+        <!-- Second Form : Simple Interest Calculator -->
+        <section>
+            <form id="frm_sinterest" name="frm_sinterest">
+                <div>
+                    <label for="principal">Principal: <small>(&#8358;)</small></label>
+                    <input type="number" name="principal" id="principal" placeholder="Enter the principal amount">
+                </div>
+                <div>
+                    <label for="rate">Rate: <small>(%)</small></label>
+                    <input type="number" name="rate" id="rate" placeholder="Enter the rate in percentage">
+                </div>
+                <div>
+                    <label for="time">Time: <small>(in months)</small></label>
+                    <input type="number" name="time" id="time" placeholder="Enter the time in months">
+                </div>
+                <div id="si-result-pane">
+
+                </div>
+                <div>
+                    <button type="submit">
+                        Calculate
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <hr>
+
+        <!-- Buildup to next class (Event Listener) -->
+         <section>
+            <input type="text" id="username" placeholder="Enter your name">
+         </section>
+
+    </div>
+
+
+    <script>
+        // // Working with form elements
+        // let form = document.forms;
+        // console.log(form.age_calForm);
+        // console.log(form.frm_age_calculator);
+        // console.log(form['frm_age_calculator']);
+
+        // // let inputEl = document.forms['frm_age_calculator']['yearOfBirth']; // Getting the input element directly
+        // let form = document.forms['frm_age_calculator'];
+
+        // // console.log(form.yearOfBirth);
+        // let yearOfBirthEl = form['yearOfBirth']
+        // yearOfBirthEl.value = "Hello World";
+
+        /**
+         * EVENT DRIVEN PROGRAM: A program that relies on the various events (actions) carried out by the user
+         * Example of Events: click, dbclick, mousemove, keypress, etc.
+         * 
+         * EVENT LISTENER: A JavaScript function that listens to when an event is triggered and caries out a function
+        */
+
+        // Example 1 : Using the Event Listener attribute on the HTML element to call a function.
+        let CalculateAge = () => {
+            let currentYear = new Date().getFullYear();
+            let form = document.forms['frm_age_calculator'];
+            let yearOfBirthEl = form['yearOfBirth'];
+
+            let yearOfBirth = yearOfBirthEl.value;
+
+            if (yearOfBirth == "") {
+                alert("Year of birth must not be empty");
+                return;
+            }
+
+            if (isNaN(yearOfBirth)) {
+                alert("Year of birth must be a valid number");
+                return;
+            }
+
+            let age = currentYear - yearOfBirth;
+
+            let resultEl = document.getElementById('result-pane')
+            // resultEl.textContent = 'You are ' + age + ' years old.';
+            resultEl.textContent = `You are ${age} years old.`;
+        }
+
+        let handleFormEvent = (ev) => {
+            ev.preventDefault(); // prevent the form from submitting
+            CalculateAge(); // invoke (call) the CalculateAge function
+        }
+
+
+        // Example 2 : Handling the Event Listener in JavaScript Code
+        let siForm  = document.forms['frm_sinterest'];
+
+        /**
+         *  Listen and handle submit event on the form using `addEventListener()` methods
+         *  The addEventListener(event, callback) method accepts two (2) arguments which are, the event and a callback function
+         */
+        siForm.addEventListener('submit', (ev) => {
+            ev.preventDefault();
+            // alert('The form wanted to submit but we prevented it.')
+            let principal = siForm['principal'].value; 
+            let rate = siForm['rate'].value; 
+            let time = siForm['time'].value; 
+
+            if(principal == "" || rate == "" || time == "") {
+                alert("Empty fields detected! Kindly make sure you enter all fields correctly");
+                return;
+            }
+
+            // OPTIONAL: We can still check isNaN for all 3 variables
+
+            let SI = (principal * rate * time) / 100
+            
+            document.getElementById('si-result-pane').textContent = `The simple interest is ${SI}.`;
+        });
+
+
+        // Example (Advance Event Listener) directly on input element (Keyboard Events: keypress, keydown, keyup)
+        document.getElementById('username').addEventListener('keyup', (ev) => {
+            if (ev.key.toLowerCase() == "enter") {
+                // When enter is pressed get the value of the event target input
+                let name = ev.target.value;
+
+                alert(`Welcome ${name}, Happy Coding...`);
+            }            
+        })
+    </script>
+</body>
+
+</html>
