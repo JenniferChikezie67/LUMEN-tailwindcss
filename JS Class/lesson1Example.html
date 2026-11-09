@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="result-pane">
+
+    </div>
+
+    <script>
+
+        let yearOfBirth = prompt("Enter your birth year");
+        let currentYear = new Date().getFullYear();
+
+        let age = currentYear - yearOfBirth;
+
+        console.log(age);
+        
+        let resultEl = document.getElementById('result-pane')
+        // resultEl.textContent = 'You are ' + age + ' years old.';
+        resultEl.textContent = `You are ${age} years old.`;
+
+    </script>
+
+</body>
+</html>
