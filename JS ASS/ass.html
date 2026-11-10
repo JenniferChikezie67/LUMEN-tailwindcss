@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+</head>
+
+<body>
+     <section>
+            <h1>Currency Converter</h1>
+            <label for="amount">Enter Amount:</label>
+            <input type="number" id="amount" placeholder="Enter amount"> <br> <br>
+
+            <label for="currency">Select Currency:</label>
+            <select  id="currency">
+                <option value="N">Naira (&#8358)</option>
+                <option value="USD">Dollar ($)</option>
+                <!-- <option value="X">X</option> -->
+            </select> <br> <br>
+
+            <button onclick="calculateCurrency()"> Calculate</button>
+
+            <p id="result"></p>
+
+        </section>
+
+
+    <script>
+        function convertCurrency(amount, currency) {
+        
+            if (currency === "N") {
+                return (amount / 750);
+            } else if (currency === "USD") {
+                return (amount * 750);
+            } else {
+                return "Invalid Currency type provided"
+            }
+
+        }
+        console.log(convertCurrency (7500, "N"));
+        console.log(convertCurrency (10, "USD"));
+        console.log(convertCurrency (500, "X"));
+
+
+        function calculateCurrency() {
+            let amount = Number(document.getElementById("amount").value);
+            let currency = document.getElementById("currency").value;
+            let result = document.getElementById("result");
+
+            if (amount <= 0 || !Number.isFinite(amount)){
+                result.textContent = "Enter a valid amount.";
+                return;
+            }
+
+            let convertedAmount = convertCurrency(amount, currency);
+            if (currency === "N"){
+                result.textContent = "$" + convertedAmount;
+            }else{
+                result.textContent = "N" + convertedAmount;
+            }
+            
+        }
+        
+    </script>
+
+</body>
+
+</html>
