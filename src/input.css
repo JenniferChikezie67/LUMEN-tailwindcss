@@ -56,3 +56,8 @@
 .nav-a.nav-a:hover::after{
     width: 100%;
 }
+
+/* Lesson 3 styles */
+.lesson_3_buttons {
+    @apply py-1 px-4 rounded-xl text-shadow-sm;
+}

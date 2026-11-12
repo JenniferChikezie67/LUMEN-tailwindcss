@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 3</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <div class="mx-auto my-20 min-h-20 bg-slate-50 shadow border max-w-sm p-4">
+        <div class="w-40 h-40 bg-slate-200 mx-auto my-6" id="color-box"></div>
+
+        <section class="text-sm flex justify-center gap-1 flex-wrap">
+            <button class="lesson_3_buttons bg-linear-to-b from-slate-200 to-slate-300 text-slate-800 border border-slate-300">Default</button>
+            <button class="lesson_3_buttons bg-linear-to-b from-blue-500 to-blue-800 text-white"> Blue </button>
+            <button class="lesson_3_buttons bg-linear-to-b from-red-500 to-red-800 text-white">Red</button>
+            <button class="lesson_3_buttons bg-linear-to-b from-yellow-500 to-yellow-800 text-white">Yellow</button>
+            <button class="lesson_3_buttons bg-linear-to-b from-green-500 to-green-800 text-white">Green</button>
+            <button class="lesson_3_buttons bg-linear-to-b from-purple-500 to-purple-800 text-white">Purple</button>
+            <button class="lesson_3_buttons bg-linear-to-b from-teal-500 to-teal-800 text-white">Teal</button>
+            <button class="lesson_3_buttons bg-linear-to-b from-black to-black text-white">Black</button>
+        </section>
+    </div>
+    
+
+    <script>
+
+        let colorBox = document.getElementById('color-box');
+        // Instead of giving all the buttons IDs, use the class to target all of them at once
+        let buttons = document.getElementsByClassName('lesson_3_buttons');
+        let defaultColor = '#E2E8F0'
+
+        // console.log("Default", defaultColor);
+        
+
+        // console.log("Number of buttons", buttons.length);
+        
+
+        for (let i = 0; i < buttons.length; i++) {
+            // Add event listener to each of the button as the loop executes
+            buttons[i].addEventListener('click', (ev) => {
+                // console.log(ev.target.textContent.trim().toLowerCase()); // trim() removes spaces
+                let colorName = ev.target.textContent.trim().toLowerCase();
+            
+                if (colorName == 'default') {
+                    colorBox.style.backgroundColor = defaultColor;
+                }else{
+                    colorBox.style.backgroundColor = colorName;
+                }
+            })
+                        
+        }
+        
+
+    </script>
+</body>
+</html>
