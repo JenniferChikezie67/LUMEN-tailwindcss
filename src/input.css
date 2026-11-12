@@ -43,11 +43,11 @@
     -webkit-clip-path: polygon(5% 0, 100% 0%, 95% 100%, 0% 100%);
 }
 
-.nav-a::after{
+/* .nav-a::after{
     content: '';
     position: absolute;
-    height: 2px;
-    width: 0;
+    height: px;
+    width: 100%;
     left: 0;
     bottom: 0;
     background-color: brown;
