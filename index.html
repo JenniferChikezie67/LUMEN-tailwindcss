@@ -7,6 +7,30 @@
     <title>Hello World</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <script>
+
+        // First, check if the local storage have a variable called 'theme'
+        if (localStorage.theme == undefined || localStorage.theme == '') {
+            /**
+             * Get the system default theme if is dark 
+             * (note: the code below will return true if the system is in dark mode, otherwise false)
+            */
+            let isSystemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            if (isSystemDark) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        } else {
+            // if the is theme, get the current theme and use it on the website
+            let currentTheme = localStorage.getItem('theme');
+            if (currentTheme == 'light') {
+                document.documentElement.classList.remove('dark');
+            } else {
+                document.documentElement.classList.add('dark');
+            }
+        }
+    </script>
 </head>
 
 <body class="bg-primary-bg">
@@ -14,7 +38,7 @@
     <header class="bg-primary-bg/70 backdrop-blur-xl sticky top-0 border-b border-muted/50 z-50">
         <section class="app-container flex justify-between items-center py-2 px-3 md:p-4">
             <!-- Brand Logo / Name -->
-            <div class="text-white text-2xl font-semibold py-4">
+            <div class="text-primary-fg text-2xl font-semibold py-4">
                 LUMEN <span class="text-primary">Studio</span>
             </div>
 
@@ -23,22 +47,22 @@
                 id="nav-menu">
                 <ul class="flex flex-col lg:flex-row text-sm">
                     <li>
-                        <a href="" class="block py-3 px-4 hover:text-white nav-a">About</a>
+                        <a href="" class="block py-3 px-4 hover:text-primary-fg nav-a">About</a>
                     </li>
                     <li>
-                        <a href="" class="block py-3 px-4 hover:text-white nav-a">Services</a>
+                        <a href="" class="block py-3 px-4 hover:text-primary-fg nav-a">Services</a>
                     </li>
                     <li>
-                        <a href="" class="block py-3 px-4 hover:text-white nav-a">Work</a>
+                        <a href="" class="block py-3 px-4 hover:text-primary-fg nav-a">Work</a>
                     </li>
                     <li>
-                        <a href="" class="block py-3 px-4 hover:text-white nav-a">Process</a>
+                        <a href="" class="block py-3 px-4 hover:text-primary-fg nav-a">Process</a>
                     </li>
                     <li>
-                        <a href="" class="block py-3 px-4 hover:text-white nav-a">Team</a>
+                        <a href="" class="block py-3 px-4 hover:text-primary-fg nav-a">Team</a>
                     </li>
                     <li>
-                        <a href="" class="block py-3 px-4 hover:text-white nav-a">Pricing</a>
+                        <a href="" class="block py-3 px-4 hover:text-primary-fg nav-a">Pricing</a>
                     </li>
                 </ul>
             </nav>
@@ -46,12 +70,12 @@
             <!-- CTA Button -->
             <div class="flex items-center gap-2">
                 <button
-                    class="bg-primary-bg-light text-white border border-white/50 p-3 text-sm md:py-4 md:px-7 rounded-4xl hover:-translate-y-4 transition-all duration-500">
+                    class="bg-primary-bg-light text-primary-fg border border-primary-fg/50 p-3 text-sm md:py-4 md:px-7 rounded-4xl hover:-translate-y-4 transition-all duration-500">
                     Start A Project
                 </button>
 
                 <button onclick="toggleNavmenu()"
-                    class="text-white border border-white/50 p-2 text-sm md:p-3 md:text-base rounded-lg lg:hidden">
+                    class="text-primary-fg border border-primary-fg/50 p-2 text-sm md:p-3 md:text-base rounded-lg lg:hidden">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
@@ -69,7 +93,8 @@
                     <img src="./assets/images/hero-img.avif" alt="" class="object-cover min-h-full">
                 </div>
                 <!-- Year of Experience -->
-                <div class="bg-muted/10 backdrop-blur absolute p-4 max-w-60 rounded-2xl space-y-3 left-0 bottom-10 border border-muted/30 animate-custom-bounce-slower">
+                <div
+                    class="bg-muted/10 backdrop-blur absolute p-4 max-w-60 rounded-2xl space-y-3 left-0 bottom-10 border border-muted/30 animate-custom-bounce-slower">
                     <h1 class="text-5xl text-primary font-bold">25+</h1>
                     <p class="text-muted uppercase text-sm font-mono">
                         Years shaping spaces across 18 countries
@@ -77,14 +102,27 @@
                 </div>
 
                 <!-- Fixed Top Banner -->
-                 <div class="py-2 px-4 absolute right-20 rounded-lg top-0 bg-primary slanted">
+                <div class="py-2 px-4 absolute right-20 rounded-lg top-0 bg-primary slanted">
                     Est. 1999
-                 </div>
+                </div>
             </aside>
         </div>
     </section>
 
     <div class="bg-white h-1000"></div>
+
+
+    <div class="fixed right-0 top-[45%] bg-primary flex flex-col">
+        <button class="p-4 cursor-pointer" onclick="toggleMode('light')">
+            <i class="fa-solid fa-sun"></i>
+        </button>
+        <button class="p-4 cursor-pointer" onclick="toggleMode('dark')">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="p-4 cursor-pointer" onclick="toggleMode('system')">
+            <i class="fa-solid fa-desktop"></i>
+        </button>
+    </div>
 
     <script src="./js/index.js"></script>
 </body>
