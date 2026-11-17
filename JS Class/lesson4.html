@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body class="box-border">
+    <section class=" max-w-80 mx-auto my-30 p-2 py-5 border rounded-lg">
+        <div id="result-pane"
+            class="text-3xl font-bold  w-full mb-2 min-h-20 p-2 rounded-lg bg-gray-100 flex items-center justify-end">0
+        </div>
+
+        </input>
+        <div class="grid grid-cols-4 gap-2">
+            <button class="btns bg-gray-300">
+                %
+            </button>
+
+            <button class="btns bg-gray-300" onclick="clearOps('screen')">
+                CE
+            </button>
+
+            <button class="btns bg-gray-300" onclick="clearOps('all')">
+                C
+            </button>
+
+            <button class="btns bg-gray-300" onclick="backSpace()">
+                ⌫
+            </button>
+
+            <button class="btns bg-gray-300">
+                1/x
+            </button>
+
+            <button class="btns bg-gray-300">
+                x<sup>2</sup>
+            </button>
+
+            <button class="btns bg-gray-300">
+                2d
+            </button>
+
+            <button class="btns bg-gray-300">
+                /
+            </button>
+
+            <button class="btns num_btns">
+                7
+            </button>
+            <button class="btns num_btns">
+                8
+            </button>
+
+            <button class="btns num_btns">
+                9
+            </button>
+
+            <button class="btns bg-gray-300">
+                x
+            </button>
+
+            <button class="btns num_btns">
+                4
+            </button>
+
+            <button class="btns num_btns">
+                5
+            </button>
+
+            <button class="btns num_btns">
+                6
+            </button>
+
+            <button class="btns bg-gray-300">
+                -
+            </button>
+
+            <button class="btns num_btns">
+                1
+            </button>
+            <button class="btns num_btns">
+                2
+            </button>
+
+            <button class="btns num_btns">
+                3
+            </button>
+            <button class="btns bg-gray-300">
+                +
+            </button>
+            <button class="btns" onclick="toggleSign()">
+                +/-
+            </button>
+
+            <button class="btns num_btns">
+                0
+            </button>
+
+            <button class="btns" onclick="addDecimalPoint()">
+                .
+            </button>
+
+            <button class="btns bg-gray-400">
+                =
+            </button>
+
+
+        </div>
+    </section>
+
+
+
+    <script>
+        let ResultPane = document.getElementById('result-pane');
+        const formatter = new Intl.NumberFormat('en-US');
+
+        document.querySelectorAll('.num_btns').forEach((NumBtn, index) => {
+            NumBtn.addEventListener('click', (ev) => {
+                // Assign the number on the button content to the variable 'btnNumber' and send it as an argument for the num paremeter in the the Display function.
+                let btnNumber = ev.target.textContent;
+                Display(btnNumber)
+            })
+        })
+
+        let Display = (num) => {
+            let currentValue = ResultPane.textContent.trim();
+
+            if (currentValue == '0') {
+                ResultPane.textContent = num.trim().toLocaleString('en-US');
+            } else {
+                ResultPane.textContent = (currentValue.trim() + num.trim()).toLocaleString('en-US');
+                console.log(currentValue.trim() + num.trim());
+
+            }
+        }
+
+        // Mode parameter can recieve two argument ('screen', and 'all'). The default is 'screen'
+        let clearOps = (mode = 'screen') => {
+            ResultPane.innerText = '0';
+
+            if (mode == 'all') {
+                // Implement clearing temporary storage
+            }
+        }
+
+        // function for backspace 
+        let backSpace = () => {
+            let currentValue = ResultPane.textContent.trim();
+
+            if (currentValue.length == 1) {
+                ResultPane.innerText = '0';
+                return;
+            }
+
+            ResultPane.innerText = currentValue.slice(0, (currentValue.length - 1))
+        }
+
+        let toggleSign = () => {
+            let currentValue = ResultPane.textContent.trim();
+
+            if (currentValue.indexOf('-') >= 0){
+                console.log(currentValue.indexOf('-'));
+                
+                ResultPane.innerText = currentValue.slice(1, (currentValue.length))
+            }else{
+                ResultPane.textContent = '-' + currentValue;
+            } 
+        }
+
+        let addDecimalPoint = () => {
+            let currentValue = ResultPane.textContent.trim();
+
+            if (currentValue.indexOf('.') >= 0) return; // If there is a dot )decimal point, exit the function
+
+            ResultPane.textContent = currentValue + '.';
+
+        }
+    </script>
+</body>
+
+</html>

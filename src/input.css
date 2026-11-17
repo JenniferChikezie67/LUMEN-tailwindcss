@@ -72,3 +72,9 @@
 .lesson_3_buttons {
     @apply py-1 px-4 rounded-xl text-shadow-sm;
 }
+
+
+.btns{
+    @apply flex justify-center items-center rounded border border-gray-100 py-3 hover:bg-gray-600 
+    
+}
