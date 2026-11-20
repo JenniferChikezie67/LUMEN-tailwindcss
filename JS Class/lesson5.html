@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Elements</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    
+    <section class="bg-slate-300 my-10 mx-auto max-w-md min-h-10 p-4">
+        <form name="items-form">
+            <div class="mb-3">
+                <label for="item" class="block">Enter an Item</label>
+                <input 
+                    type="text" 
+                    id="item"
+                    placeholder="Add the name of any item you want to add to this list."
+                    class="block w-full px-4 py-2 border mt-2"
+                    name="item-input"
+                    required
+                >
+            </div>
+            <div class="mb-3">
+                <label for="credit-unit" class="block">Enter Credit Unit</label>
+                <input 
+                    type="number" 
+                    id="credit-unit"
+                    placeholder="Add the name of any item you want to add to this list."
+                    class="block w-full px-4 py-2 border mt-2"
+                    name="cunit-input"
+                    required
+                >
+            </div>
+            <div class="text-right">
+                <button type="submit" class="bg-blue-500 py-2 px-4 rounded-xl text-white inline-block">
+                    Add To List
+                </button>
+            </div>
+        </form>
+    </section>
+
+
+    <section class="p-6 mt-10">
+        <div id="list-content" class="flex justify-center items-start flex-wrap gap-4">
+            <!-- <aside class="border py-1 px-3">
+                <div class="font-bold text-lg">Computer Science</div>
+                <small class="text-slate-600 text-xs font-semibold">Credit Load - 4</small>
+            </aside> -->
+        </div>
+    </section>
+
+    <script>
+        let listContent = document.getElementById("list-content");
+        let itemForm = document.forms['items-form'];
+
+        itemForm.addEventListener('submit', (ev) => {
+            ev.preventDefault();
+
+            let itemName = itemForm['item-input'].value;
+            let creditUnit = itemForm['cunit-input'].value;
+
+            // Create a div, small and an aside element
+            let divEl = document.createElement('div');
+            let smallEl = document.createElement('small');
+            let asideEl = document.createElement('aside');
+
+            // Add the needed class
+            asideEl.classList.add('border', 'py-1', 'px-3')
+            divEl.classList.add('font-bold', 'text-lg')
+            smallEl.classList.add('text-slate-600', 'text-xs', 'font-semibold')
+
+
+            divEl.textContent = itemName;
+            smallEl.textContent = "Credit Load - " + creditUnit
+
+            asideEl.append(divEl);
+            asideEl.append(smallEl);
+
+            listContent.append(asideEl)
+
+            itemForm.reset();
+            
+        })
+
+    </script>
+</body>
+</html>
